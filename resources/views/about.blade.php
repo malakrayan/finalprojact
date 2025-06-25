@@ -8,9 +8,16 @@
 </head>
 <body>
     <h1>Hello, {{$name}}</h1>
-    <form action="about" method="post">
-        <input type="text" name="name " id="name">
-        <input type="submit" value="Send">
+       <form method="POST" action="/about">
+    @csrf
+    <input type="text" name="name"><br><br>
+    <select name="department" id="department">
+        @foreach($departments as $kay=> $department)
+        <option value="{{$kay}}">{{$department}}</option>
+        @endforeach
+    </select><br><br>
+    <button type="submit">Submit</button>
+</form>
     </form>
 </body>
 </html>
